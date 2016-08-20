@@ -16,9 +16,13 @@ $(document).ready(function(){
 
 	var difficultyArray5 = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
+	var currentWord = [];
+
 	var difficulty = 1;
 
 	var wrongs = 0;
+
+	var rights = 0;
 
 
 		
@@ -38,7 +42,14 @@ $(document).ready(function(){
 
 					gameWord = word.responseText.toUpperCase();
 
+					for(var k = 0; k < gameWord.length; k++){
+
+						currentWord.push(gameWord.charAt(k));
+
+					}
+
 					alert(gameWord);
+					alert(currentWord);
 
 
 
@@ -61,53 +72,31 @@ $(document).ready(function(){
 
 					function check() {
 
-						alert(a);
-
 						var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+
+						alert(userGuess);
 
 						userGuessArray.push(userGuess);
 
-						if(gameWord.indexOf(userGuess) >= 0){
+						if(currentWord.indexOf(userGuess) >= 0){
 
-							difficultyArray1[gameWord.indexOf(userGuess)] = userGuess;
+							while(currentWord.indexOf(userGuess) >= 0){
 
-							index = gameWord.indexOf(userGuess);
+								difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
+								currentWord[currentWord.indexOf(userGuess)] = "";
 
-							var sub = "";
+								rights++;
 
-							if(index == 0){
+								if(rights == 5){
 
-								index = 1;
-
-								sub = gameWord.substring(index);
-
-							} 
-
-							else {
-
-								sub = gameWord.substring(index+1);
-
-							}
-
-							alert(sub);
-
-
-							index = sub.indexOf(userGuess) + index;
- 
-							alert(index);
-
-							if(index != -1){
-
-								while (index != -1) {
-
-									difficultyArray1[index] = userGuess;
-
-									index = gameWord.substring(index+1).indexOf(userGuess) + index;
+									alert("You Win");
 
 								}
 
+							
 							}
-
+							
+							
 						}
 
 						else {
@@ -117,9 +106,20 @@ $(document).ready(function(){
 
 							alert(wrongs);
 
+							if(wrongs == 4){
+
+								alert("You Lose");
+
+							}
+
 						}
+						alert(currentWord);
+						alert(userGuessArray);
+						alert(difficultyArray1);
 
 					}
+
+
 
 				// }
 
