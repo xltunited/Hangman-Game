@@ -18,114 +18,91 @@ $(document).ready(function(){
 
 	var currentWord = [];
 
-	var difficulty = 1;
+	var difficulty1 = document.getElementById('level1');
+	var difficulty2 = document.getElementById('level2');
+	var difficulty3 = document.getElementById('level3');
+	var difficulty4 = document.getElementById('level4');
+	var difficulty5 = document.getElementById('level5');
 
 	var wrongs = 0;
 
 	var rights = 0;
 
 
-		
-	
+	difficulty1.onclick = function(){
 
-		if( difficulty === 1){
+		var word = new XMLHttpRequest();
 
-			if(gameWord === ""){
+		word.open("GET", "http://randomword.setgetgo.com/get.php?len=5", false);
 
-				for( var i = 0; i < 1; i++){
+		word.send();
 
-					var word = new XMLHttpRequest();
+		gameWord = word.responseText.toUpperCase();
 
-					word.open("GET", "http://randomword.setgetgo.com/get.php?len=5", false);
+		for(var k = 0; k < gameWord.length; k++){
 
-					word.send();
+			currentWord.push(gameWord.charAt(k));
 
-					gameWord = word.responseText.toUpperCase();
+		}
 
-					for(var k = 0; k < gameWord.length; k++){
+		alert(gameWord);
 
-						currentWord.push(gameWord.charAt(k));
+
+		document.addEventListener("keypress", check1);
+
+		function check1() {
+
+			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+
+			if(userGuessArray.indexOf(userGuess) == -1){
+
+
+				userGuessArray.push(userGuess);
+				alert(userGuess)
+
+				if(currentWord.indexOf(userGuess) >= 0){
+
+				while(currentWord.indexOf(userGuess) >= 0){
+
+					difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
+					currentWord[currentWord.indexOf(userGuess)] = "";
+
+					rights++;
+
+					if(rights == 5){
 
 					}
 
-					alert(gameWord);
-					alert(currentWord);
+				
+				}
+				
+				
+			}
+
+			else {
 
 
+				wrongs++;
+
+
+
+				if(wrongs == 4){
 
 				}
 
-				// for(wrongs = 0; wrongs < 5 ;){
-
-				// 	if(wrongs == 4){
-
-				// 		wrongs = 5;
-				// 		gameWord = "";
-				// 		continue;
-
-				// 	}
-
-					alert("here1");
-
-					var a = document.addEventListener("keypress", check);
-
-
-					function check() {
-
-						var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
-
-						alert(userGuess);
-
-						userGuessArray.push(userGuess);
-
-						if(currentWord.indexOf(userGuess) >= 0){
-
-							while(currentWord.indexOf(userGuess) >= 0){
-
-								difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
-								currentWord[currentWord.indexOf(userGuess)] = "";
-
-								rights++;
-
-								if(rights == 5){
-
-									alert("You Win");
-
-								}
-
-							
-							}
-							
-							
-						}
-
-						else {
-
-
-							wrongs++;
-
-							alert(wrongs);
-
-							if(wrongs == 4){
-
-								alert("You Lose");
-
-							}
-
-						}
-						alert(currentWord);
-						alert(userGuessArray);
-						alert(difficultyArray1);
-
-					}
-
-
-
-				// }
+			}
 
 			}
 
 		}
+
+
+	}
+
+		
+	
+
+
 
 		// if( difficulty === 2){
 
