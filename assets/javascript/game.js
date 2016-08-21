@@ -28,6 +28,21 @@ $(document).ready(function(){
 
 	var rights = 0;
 
+	difficulty1.onclick = function showGame() {
+
+		var buttonRow = document.getElementById('gameDifficultyButtons');
+
+		var buttonRowDisplaySetting = buttonRow.style.display;
+
+	
+			buttonRow.style.display = 'none';
+
+
+		
+
+
+	}
+
 
 	difficulty1.onclick = function(){
 
@@ -47,55 +62,60 @@ $(document).ready(function(){
 
 		alert(gameWord);
 
-
 		document.addEventListener("keypress", check1);
 
 		function check1() {
 
 			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
+			if(wrongs == 4){
+
+				return;
+
+			}
+
 			if(userGuessArray.indexOf(userGuess) == -1){
 
-
 				userGuessArray.push(userGuess);
+
+				var htmlUserArray = userGuessArray;
+
+				document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
+
+				$('#userGuessArray').each(function () {
+
+   				$(this).html($(this).html().replace(/(,)/g, '<span style="color: #fff;">$1</span>'));
+
+				});
+
 				alert(userGuess)
 
 				if(currentWord.indexOf(userGuess) >= 0){
 
-				while(currentWord.indexOf(userGuess) >= 0){
+					while(currentWord.indexOf(userGuess) >= 0){
 
-					difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
-					currentWord[currentWord.indexOf(userGuess)] = "";
+						difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
+						currentWord[currentWord.indexOf(userGuess)] = "";
 
-					rights++;
+						rights++;
 
-					if(rights == 5){
+						if(rights == 5){
+
+						}
 
 					}
-
-				
-				}
-				
-				
-			}
-
-			else {
-
-
-				wrongs++;
-
-
-
-				if(wrongs == 4){
-
+			
 				}
 
-			}
+				else {
+
+					wrongs++;
+
+				}
 
 			}
 
 		}
-
 
 	}
 
