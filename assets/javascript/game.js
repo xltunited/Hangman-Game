@@ -71,11 +71,7 @@ $(document).ready(function(){
 
 		//Populate the array 'currentWord' with every letter of the word fetched (Makes is easier to check user input against the game word)
 
-		for(var k = 0; k < gameWord.length; k++){
-
-			currentWord.push(gameWord.charAt(k));
-
-		}
+		currentWord = gameWord.split("");
 
 		alert(gameWord);
 
@@ -145,6 +141,8 @@ $(document).ready(function(){
 
 					gameWord = "";
 
+					document.removeEventListener("keypress", check1);
+
 					//Finishes the function (or so I wish, I want this to finish the difficulty1.onclick function too)
 
 					return;
@@ -197,6 +195,7 @@ $(document).ready(function(){
 
 		}
 
+		return;
 	}
 
 		
