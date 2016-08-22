@@ -1,6 +1,138 @@
 #userRowGuess {
 
+	display: none;
+
+}
+
+#gameDifficultyButtons {
+
+	text-align: center;
+
+	margin-top: 50px;
+
+
+}
+
+#gameInfo{
 
 	display: none;
+
+}
+
+.form-horizontal{
+
+	border: 1px solid black;
+
+}
+.btn-difficulty { 
+  color: #FFFFFF; 
+  background-color: #F06E3E; 
+  border-color: #F06E3E; 
+  font-family: 'Berkshire Swash', cursive;
+
+  margin-bottom: 10px;
+
+
+} 
+ 
+.btn-difficulty:hover, 
+.btn-difficulty:focus, 
+.btn-difficulty:active, 
+.btn-difficulty.active, 
+.open .dropdown-toggle.btn-difficulty { 
+  color: #FFFFFF; 
+  background-color: ; 
+  border-color: #F06E3E; 
+} 
+ 
+.btn-difficulty:active, 
+.btn-difficulty.active, 
+.open .dropdown-toggle.btn-difficulty { 
+  background-image: none; 
+} 
+ 
+.btn-difficulty.disabled, 
+.btn-difficulty[disabled], 
+fieldset[disabled] .btn-difficulty, 
+.btn-difficulty.disabled:hover, 
+.btn-difficulty[disabled]:hover, 
+fieldset[disabled] .btn-difficulty:hover, 
+.btn-difficulty.disabled:focus, 
+.btn-difficulty[disabled]:focus, 
+fieldset[disabled] .btn-difficulty:focus, 
+.btn-difficulty.disabled:active, 
+.btn-difficulty[disabled]:active, 
+fieldset[disabled] .btn-difficulty:active, 
+.btn-difficulty.disabled.active, 
+.btn-difficulty[disabled].active, 
+fieldset[disabled] .btn-difficulty.active { 
+  background-color: #F06E3E; 
+  border-color: #F06E3E; 
+} 
+ 
+.btn-difficulty .badge { 
+  color: #F06E3E; 
+  background-color: #FFFFFF; 
+}
+
+.welcome {
+
+	font-family: 'Berkshire Swash', cursive;
+	text-align: center;
+	font-size: 4em;
+	color: #fff;
+
+}
+
+.setting {
+
+	margin-top: 50px;
+
+	font-family: 'Berkshire Swash', cursive;
+	text-align: center;
+	font-size: 2.7em;
+	color: #fff;
+
+}
+
+.navbar-inverse {
+
+	background-color: #fff;
+	font-family: 'Berkshire Swash', cursive;
+
+}
+
+.navbar-inverse .navbar-brand {
+
+	color: black;
+
+}
+
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+
+	color: black;
+
+}
+
+.jumbotron {
+
+
+	text-align: center;
+
+	font-family: 'Berkshire Swash', cursive;
+
+
+}
+
+.format1 {
+
+
+	font-size: 2.5em;
+
+}
+
+.correct{
+
+	letter-spacing: 10px;
 
 }

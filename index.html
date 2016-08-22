@@ -1,81 +1,161 @@
 <!DOCTYPE html>
-<html lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
 
-		<title>Hangman</title>
+<head>
 
-		<!-- Loads Jquery -->
+         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <title>Hangman</title>
 
-		<!-- Loads the reset.css file -->
+        <!-- Loads Jquery -->
 
-		<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-		<!-- Bootstrap -->
+        <!-- Loads the reset.css file -->
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 
-		<!-- Javascript library for Bootstrap -->
+        <!-- Bootstrap -->
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- My own style.css -->
+        <!-- Javascript library for Bootstrap -->
 
-		<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-		<!-- Loads game.js file -->
+        <!-- Loads fonts -->
 
-		<script type="text/javascript" src="./assets/javascript/game.js"></script> 
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 
-	</head>
-	<body>
+        <!-- picture css -->
 
-	<div class="container-fluid">
+        <link rel="stylesheet" type="text/css" href="./assets/css/picture.css">
 
-		<!-- Div that holds the buttons -->
+        <!-- My own style.css -->
 
-		<div class="row" id="gameDifficultyButtons">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
-			<div class="col-sm-3"></div>
+        <!-- Loads game.js file -->
 
-			<div class="col-sm-6">
-
-				<button id="level1">Level 1</button>
-				<button id="level2">Level 2</button>
-				<button id="level3">Level 3</button>
-				<button id="level4">Level 4</button>
-				<button id="level5">Level 5</button>
-
-			</div>
-
-			<div class="col-sm-3"></div>
-
-		</div>
-
-		<!-- Div that holds the array that holds the user guesses -->
-
-		<div class="row" id="userRowGuess">
-			
-			<div class="col-sm-4"></div>
-
-			<div class="col-sm-4" id="userGuessArray">
-				
-				
-		
-
-			</div>
-
-			<div class="col-sm-4"></div>
+        <script type="text/javascript" src="./assets/javascript/game.js"></script> 
 
 
-		</div>
+</head>
 
-	</div>
+<body>
 
-	</body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+                <a class="navbar-brand rules" href="http://www.printactivities.com/Paper-Games/Rules-For-Hangman.shtml">Hangman Rules</a>
+
+            </div>
+    
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row welcome" id="welcome">
+
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10">
+            
+                Want To Test Your English Vocabulary?
+
+            </div>
+
+             <div class="col-sm-1"></div>
+
+        </div>
+
+        <div class="row setting" id="setting">
+
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10">
+            
+                Choose a Level
+
+            </div>
+
+             <div class="col-sm-1"></div>
+
+        </div>
+
+        <div class="row" id="gameDifficultyButtons">
+
+            <div class="col-sm-2"></div>
+
+            <div class="col-sm-8">
+
+                <button id="level1" class="btn btn-difficulty">Grammar School</button>
+                <button id="level2" class="btn btn-difficulty">Middle School</button>
+                <button id="level3" class="btn btn-difficulty">SAT Word</button>
+                <button id="level4" class="btn btn-difficulty">Where's the Dictionary?</button>
+                <button id="level5" class="btn btn-difficulty">English PHD</button>
+
+            </div>
+
+            <div class="col-sm-2"></div>
+
+        </div>
+
+        <!-- Div that holds the array that holds the user guesses -->
+
+        <div class="row gameInfo" id="gameInfo">
+            
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10">
+
+            <div class="jumbotron">
+
+                <div class="format1">
+                    Word
+                </div>
+
+                <div class="format" id="correct"></div>
+
+                <div class="format1">
+                    
+                    Letters Guessed
+
+                </div>
+
+                <div class="format" id="userGuessArray"></div>
+
+                <div class="format1">
+                    
+                Tries Remaining
+
+                </div>
+
+                <div class="format" id="triesRemaining"></div>
+
+
+            </div>
+                
+            </div>
+
+            <div class="col-sm-1"></div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+
+</body>
 
 </html>

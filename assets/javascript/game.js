@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	//Arrays for the various difficulties 
 
-	var difficultyArray1 = ["", "", "", "", ""];
+	var difficultyArray1 = ["_", "_", "_", "_", "_"];
 
 	var difficultyArray2 = ["", "", "", "", "", ""];
 
@@ -38,9 +38,21 @@ $(document).ready(function(){
 
 	var rights = 0;
 
+	var wins = 0;
+
+	var losses = 0;
+
+	var tries = 0;
+
 	//Reference to hide the row containing the difficulty buttons
 
+	var welcomeRow = document.getElementById('welcome');
+
+	var settingRow = document.getElementById('setting');
+
 	var buttonRow = document.getElementById('gameDifficultyButtons');
+
+	var gameInfoRow = document.getElementById('gameInfo');
 
 	difficulty1.onclick = function(){
 
@@ -49,24 +61,22 @@ $(document).ready(function(){
 
 		if(gameWord == ""){
 
+			tries = 4;
+
 			buttonRow.style.display = 'none';
+			welcomeRow.style.display = 'none';
+			settingRow.style.display = 'none';
+			gameInfo.style.display = 'block';
 
-			var htmlUserArrayDiv = document.getElementById('userRowGuess');
-
-			htmlUserArrayDiv.style.display = 'block';
+			document.querySelector('#triesRemaining').innerHTML = tries;
+			document.querySelector('#correct').innerHTML = difficultyArray1.join("");;
 
 		}
 
-		var apicall = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
-
+		var apicall = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
 
 		//Use GET request to get a 5 character word
 
-		// var word = new XMLHttpRequest();
-
-		// word.open("GET", apicall, true);
-
-		// word.send();
 
 		$.getJSON(apicall, function(data){
 
@@ -79,13 +89,6 @@ $(document).ready(function(){
 			gameWord = JSON.stringify(parsedData.word.toUpperCase()).substring(1,6);
 
 		});
-
-
-		//Set the word to upper case (Future styling purposes)
-
-		//gameWord = word.responseText.toUpperCase();
-
-
 
 		//Document reads for key presses
 
@@ -121,19 +124,12 @@ $(document).ready(function(){
 
 				//Declare and initialize the array that I want to push into the index.html page
 
-				var htmlUserArray = userGuessArray;
+				var htmlUserArray = userGuessArray.join("");
 
 				//There is a div with an ID of 'userGuessArray' that is where the above array will be shown
 
 				document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 
-				// What the following piece of code does is turn all ',' (commas), to the color #fff which is white (This is so the commas are "invisible")
-
-				$('#userGuessArray').each(function (){
-
-   				$(this).html($(this).html().replace(/(,)/g, '<span style="color: #fff;">$1</span>'));
-
-				});
 
 				//Checks current ammount of wrongs, if user has 3 wrongs and this 4th attemp is also wrong
 				// it executes the code inside the if statement
@@ -144,28 +140,34 @@ $(document).ready(function(){
 					//so when a difficulty button is pressed again, the game can restart with defaults set
 
 					buttonRow.style.display = 'block';
-					htmlUserArrayDiv.style.display = 'none';
+					welcomeRow.style.display = 'block';
+					settingRow.style.display = 'block';
+					gameInfo.style.display = 'none'
+
 
 					wrongs = 0;
 					rights = 0;
 
 					//Empties all the arrays
-
 					currentWord.splice(0,currentWord.length);
 					userGuessArray.splice(0,userGuessArray.length);
-					htmlUserArray.splice(0,htmlUserArray.length);
+					htmldifficultuArray1 = "";
+					htmlUserArray = "";
 
 					//Clears out the div in the index.html that displayed the htmlUserArray
 
 					document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
+					document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
-					difficultyArray1 = ["", "", "", "", ""];
+					difficultyArray1 = ["_", "_", "_", "_", "_"];
 
 					gameWord = "";
 
 					document.removeEventListener("keypress", check1);
 
 					//Finishes the function (or so I wish, I want this to finish the difficulty1.onclick function too)
+
+					losses++;
 
 					alert("You Loose")
 
@@ -183,6 +185,8 @@ $(document).ready(function(){
 
 					while(currentWord.indexOf(userGuess) >= 0){
 
+						
+
 						//difficultyArray1 starts off empty, only when a userGuess is right, userGuess is pushed into the array
 						//at the same index it is in the array currentWord
 
@@ -190,7 +194,11 @@ $(document).ready(function(){
 
 						//Access the index of the array that holds the game word and exchanges whatever letter was in there
 						//to ""(empty), and loops again to look for the next instance of the same letter
-						currentWord[currentWord.indexOf(userGuess)] = "";
+						currentWord[currentWord.indexOf(userGuess)] = "_";
+
+						var htmldifficultuArray1 = difficultyArray1.join("");
+
+						document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
 						//Because the difficulty is 1, the length of the letter to be guessed is 5
 
@@ -205,7 +213,10 @@ $(document).ready(function(){
 							//so when a difficulty button is pressed again, the game can restart with defaults set
 
 							buttonRow.style.display = 'block';
-							htmlUserArrayDiv.style.display = 'none';
+							welcomeRow.style.display = 'block';
+							settingRow.style.display = 'block';
+							gameInfo.style.display = 'none';
+
 
 							wrongs = 0;
 							rights = 0;
@@ -214,19 +225,24 @@ $(document).ready(function(){
 
 							currentWord.splice(0,currentWord.length);
 							userGuessArray.splice(0,userGuessArray.length);
-							htmlUserArray.splice(0,htmlUserArray.length);
+							htmldifficultuArray1 = "";
+							htmlUserArray = "";
+
 
 							//Clears out the div in the index.html that displayed the htmlUserArray
 
 							document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
+							document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
-							difficultyArray1 = ["", "", "", "", ""];
+							difficultyArray1 = ["_", "_", "_", "_", "_"];
 
 							gameWord = "";
 
 							document.removeEventListener("keypress", check1);
 
 							alert("You Win");
+
+							wins++;
 
 							return;
 
@@ -241,6 +257,7 @@ $(document).ready(function(){
 					//When userGuess is not found, the number of wrong increases
 
 					wrongs++;
+
 
 				}
 
