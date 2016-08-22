@@ -57,23 +57,35 @@ $(document).ready(function(){
 
 		}
 
-		// Use GET request to get a 5 character word
+		var apicall = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
 
-		var word = new XMLHttpRequest();
 
-		word.open("GET", "http://randomword.setgetgo.com/get.php?len=5", false);
+		//Use GET request to get a 5 character word
 
-		word.send();
+		// var word = new XMLHttpRequest();
+
+		// word.open("GET", apicall, true);
+
+		// word.send();
+
+		$.getJSON(apicall, function(data){
+
+			console.log(data);
+
+			var parsedData = JSON.parse(JSON.stringify(data));
+
+			console.log(parsedData);
+
+			gameWord = JSON.stringify(parsedData.word.toUpperCase()).substring(1,6);
+
+		});
+
 
 		//Set the word to upper case (Future styling purposes)
 
-		gameWord = word.responseText.toUpperCase();
+		//gameWord = word.responseText.toUpperCase();
 
-		//Populate the array 'currentWord' with every letter of the word fetched (Makes is easier to check user input against the game word)
 
-		currentWord = gameWord.split("");
-
-		alert(gameWord);
 
 		//Document reads for key presses
 
@@ -83,9 +95,19 @@ $(document).ready(function(){
 
 		function check1() {
 
+			//Populate the array 'currentWord' with every letter of the word fetched (Makes is easier to check user input against the game word)
+
+			if(currentWord.length == 0){
+
+				currentWord = gameWord.split("");
+
+			}
+
 			//Store the user's letter guess in 'userGuess'
 
 			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+
+			console.log(currentWord);
 
 			//Checks the 'userGuess' vs an initially empty array called 'userGuessArray'
 			//If 'userGuess' is not found in the array, it proceeds to execute code
@@ -145,6 +167,8 @@ $(document).ready(function(){
 
 					//Finishes the function (or so I wish, I want this to finish the difficulty1.onclick function too)
 
+					alert("You Loose")
+
 					return;
 
 				}
@@ -176,6 +200,35 @@ $(document).ready(function(){
 						//Also will contain code to restore game defaults
 
 						if(rights == 5){
+
+							//All the following code inside this if statement resets all values to their defaults
+							//so when a difficulty button is pressed again, the game can restart with defaults set
+
+							buttonRow.style.display = 'block';
+							htmlUserArrayDiv.style.display = 'none';
+
+							wrongs = 0;
+							rights = 0;
+
+							//Empties all the arrays
+
+							currentWord.splice(0,currentWord.length);
+							userGuessArray.splice(0,userGuessArray.length);
+							htmlUserArray.splice(0,htmlUserArray.length);
+
+							//Clears out the div in the index.html that displayed the htmlUserArray
+
+							document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
+
+							difficultyArray1 = ["", "", "", "", ""];
+
+							gameWord = "";
+
+							document.removeEventListener("keypress", check1);
+
+							alert("You Win");
+
+							return;
 
 						}
 
