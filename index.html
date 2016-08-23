@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
 
 <head>
 
@@ -57,12 +56,11 @@
 
             </div>
     
-            <!-- /.navbar-collapse -->
+            
         </div>
-        <!-- /.container -->
+        
     </nav>
 
-    <!-- Page Content -->
     <div class="container">
 
         <div class="row welcome" id="welcome">
@@ -95,9 +93,9 @@
 
         <div class="row" id="gameDifficultyButtons">
 
-            <div class="col-sm-2"></div>
+            <!-- <div class="col-sm-2"></div> -->
 
-            <div class="col-sm-8">
+            <div class="col-sm-12">
 
                 <button id="level1" class="btn btn-difficulty">Grammar School</button>
                 <button id="level2" class="btn btn-difficulty">Middle School</button>
@@ -107,11 +105,11 @@
 
             </div>
 
-            <div class="col-sm-2"></div>
+            <!-- <div class="col-sm-2"></div> -->
 
         </div>
 
-        <!-- Div that holds the array that holds the user guesses -->
+        <!-- Div that holds the array that holds the game information -->
 
         <div class="row gameInfo" id="gameInfo">
             
@@ -121,27 +119,57 @@
 
             <div class="jumbotron">
 
+            <div class="row">
+
                 <div class="format1">
                     Word
                 </div>
 
+                </div>
+
+                <div class="row">
+
                 <div class="format" id="correct"></div>
 
-                <div class="format1">
-                    
-                    Letters Guessed
-
                 </div>
 
-                <div class="format" id="userGuessArray"></div>
+                <div class="row">
 
                 <div class="format1">
                     
-                Tries Remaining
+                Letters Guessed
 
                 </div>
+
+                </div>
+
+                <div class="row">
+
+                <div class="format" id="userGuessArray"><p></p></div>
+
+                </div>
+
+                <div class="row">
+
+                <div class="format" id="overload"></div>
+
+                </div>
+
+                <div class="row">
+
+                <div class="format1">
+                    
+                Wrongs Left
+
+                </div>
+
+                </div>
+
+                <div class="row">
 
                 <div class="format" id="triesRemaining"></div>
+
+                </div>
 
 
             </div>
@@ -151,7 +179,120 @@
             <div class="col-sm-1"></div>
 
         </div>
-        <!-- /.row -->
+
+        <div class="container" id="win">
+
+        	<div class="row">
+        		
+			<div class="col-sm-12">
+				
+				You Dit It!
+
+
+			</div>
+
+        	</div>
+
+	        <div class="row">
+	        	
+				<div class="col-sm-3"></div>
+
+				<div class="col-sm-6">
+					
+					<img src="./assets/images/win.jpg" class="img-thumbnail img-responsive">
+
+				</div>
+
+				<div class="col-sm-3"></div>
+
+	        </div>
+
+	        <div class="row ">
+	        	
+
+				<div class="col-sm-12">
+
+				<button class="btn btn-difficulty" id="newGameWin">Click Here to Start A New Game</button>
+
+				</div>
+
+
+
+	        </div>
+
+	    </div>
+
+	    <div class="container" id="loss">
+
+        	<div class="row">
+        		
+			<div class="col-sm-12">
+				
+				Boo! Come On, Try Again!
+
+			</div>
+
+        	</div>
+
+	        <div class="row">
+	        	
+				<div class="col-sm-3"></div>
+
+				<div class="col-sm-6">
+					
+					<img src="./assets/images/loose.png" class="img-thumbnail img-responsive">
+
+				</div>
+
+				<div class="col-sm-3"></div>
+
+	        </div>
+
+	        <div class="row ">
+	        	
+				<div class="col-sm-12">
+
+				<button class="btn btn-difficulty" id="newGameLoss">Click Here to Start A New Game</button>
+
+				</div>
+
+
+
+	        </div>
+
+	    </div>
+
+	    <div class="row score">
+	    	
+			<div class="col-sm-12 under">
+				
+				Current Score
+				
+			</div>
+
+	    </div>
+
+	    <div class="rows score1">
+	    	
+			<div class="col-sm-3"></div>
+
+			<div class="col-sm-3" id="wins">
+				
+				Wins:   
+
+
+			</div>
+
+			<div class="col-sm-3" id="losses">
+				
+				Losses: 
+
+			</div>
+
+			<div class="col-sm-3"></div>
+
+	    </div>
+       
     </div>
     <!-- /.container -->
 

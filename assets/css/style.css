@@ -32,6 +32,11 @@
 
   margin-bottom: 10px;
 
+  font-size: 2em;
+
+  border-radius: 50px 50px 50px 50px;
+
+
 
 } 
  
@@ -40,15 +45,19 @@
 .btn-difficulty:active, 
 .btn-difficulty.active, 
 .open .dropdown-toggle.btn-difficulty { 
+
   color: #FFFFFF; 
   background-color: ; 
-  border-color: #F06E3E; 
+  border-color: #F06E3E;
+
 } 
  
 .btn-difficulty:active, 
 .btn-difficulty.active, 
 .open .dropdown-toggle.btn-difficulty { 
+
   background-image: none; 
+
 } 
  
 .btn-difficulty.disabled, 
@@ -66,13 +75,17 @@ fieldset[disabled] .btn-difficulty:active,
 .btn-difficulty.disabled.active, 
 .btn-difficulty[disabled].active, 
 fieldset[disabled] .btn-difficulty.active { 
+
   background-color: #F06E3E; 
   border-color: #F06E3E; 
+
 } 
  
 .btn-difficulty .badge { 
+
   color: #F06E3E; 
   background-color: #FFFFFF; 
+
 }
 
 .welcome {
@@ -81,6 +94,8 @@ fieldset[disabled] .btn-difficulty.active {
 	text-align: center;
 	font-size: 4em;
 	color: #fff;
+
+	margin-top: 200px;
 
 }
 
@@ -121,18 +136,119 @@ fieldset[disabled] .btn-difficulty.active {
 
 	font-family: 'Berkshire Swash', cursive;
 
+	letter-spacing: 30px;
+
+	font-size: 2.5em;
 
 }
 
 .format1 {
 
 
-	font-size: 2.5em;
+	font-size: 3em;
+
+	letter-spacing: 3px;
+
+	margin-top: 20px;
+
+	margin-bottom: 20px;
 
 }
 
-.correct{
+.userGuessArray {
 
-	letter-spacing: 10px;
+
+	padding: 50px;
 
 }
+
+#win{
+
+	display: none;
+
+	font-family: 'Berkshire Swash', cursive;
+
+	color: #fff;
+
+	font-size: 15em;
+
+	text-align: center;
+
+
+
+}
+
+#newGameWin{
+
+	font-size: .2em;
+
+	border-radius: 50px 50px 50px 50px;
+
+	
+
+
+}
+
+#loss{
+
+	display: none;
+
+	font-family: 'Berkshire Swash', cursive;
+
+	color: #fff;
+
+	font-size: 10em;
+
+	text-align: center;
+
+
+
+}
+
+#newGameLoss{
+
+	font-size: .3em;
+
+	border-radius: 50px 50px 50px 50px;
+
+}
+
+.score{
+
+	margin-top: 100px;
+
+	font-family: 'Berkshire Swash', cursive;
+
+	text-align: center;
+
+	font-size: 4em;
+
+	color: #fff;
+
+}
+
+.score1{
+	
+	margin-top: 50px;
+
+	font-family: 'Berkshire Swash', cursive;
+	
+	text-align: center;
+
+	font-size: 3em;
+
+	color: #fff;
+
+}
+
+.under{
+
+
+	text-decoration: underline;
+
+}
+
+
+
+
+
