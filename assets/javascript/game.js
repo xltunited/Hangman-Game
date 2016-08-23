@@ -548,7 +548,7 @@ $(document).ready(function(){
 
 			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
-			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess == -1)){
+			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess) == -1){
 
 				if(userGuessArray.length < 16){
 
@@ -604,6 +604,7 @@ $(document).ready(function(){
 						htmldifficultuArray3 = "";
 						htmlUserArray = "";
 
+						document.querySelector('#overload').innerHTML = htmloverload;
 						document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 						document.querySelector('#correct').innerHTML = htmldifficultuArray3;
 
@@ -659,6 +660,7 @@ $(document).ready(function(){
 								htmldifficultuArray3 = "";
 								htmlUserArray = "";
 
+								document.querySelector('#overload').innerHTML = htmloverload;
 								document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 								document.querySelector('#correct').innerHTML = htmldifficultuArray3;
 
@@ -730,7 +732,7 @@ $(document).ready(function(){
 
 			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
-			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess == -1)){
+			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess) == -1){
 
 				if(userGuessArray.length < 16){
 
@@ -786,6 +788,7 @@ $(document).ready(function(){
 						htmldifficultuArray4 = "";
 						htmlUserArray = "";
 
+						document.querySelector('#overload').innerHTML = htmloverload;
 						document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 						document.querySelector('#correct').innerHTML = htmldifficultuArray4;
 
@@ -841,6 +844,7 @@ $(document).ready(function(){
 								htmldifficultuArray4 = "";
 								htmlUserArray = "";
 
+								document.querySelector('#overload').innerHTML = htmloverload;
 								document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 								document.querySelector('#correct').innerHTML = htmldifficultuArray4;
 
@@ -912,7 +916,7 @@ $(document).ready(function(){
 
 			var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
-			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess == -1)){
+			if(userGuessArray.indexOf(userGuess) == -1 && overload.indexOf(userGuess) == -1){
 
 				if(userGuessArray.length < 16){
 
@@ -968,6 +972,7 @@ $(document).ready(function(){
 						htmldifficultuArray5 = "";
 						htmlUserArray = "";
 
+						document.querySelector('#overload').innerHTML = htmloverload;
 						document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 						document.querySelector('#correct').innerHTML = htmldifficultuArray5;
 
@@ -1024,6 +1029,7 @@ $(document).ready(function(){
 								htmldifficultuArray5 = "";
 								htmlUserArray = "";
 
+								document.querySelector('#overload').innerHTML = htmloverload;
 								document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 								document.querySelector('#correct').innerHTML = htmldifficultuArray5;
 
