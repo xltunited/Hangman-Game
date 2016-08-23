@@ -4,9 +4,11 @@ $(document).ready(function(){
 
 	var gameWord = "";
 
-	var index = 0;
+	//Array that holds the user guesses
 
 	var userGuessArray = [];
+
+	//In case userGuessArray has more than 16 entries, userGuess will be pushed into overload instead for styling purposes (When userGuessArray has more than 16 elements, letters displayed on the HTML file pop out of their div)
 
 	var overload = [];
 
@@ -40,6 +42,8 @@ $(document).ready(function(){
 
 	var rights = 0;
 
+	//Counts the current session win and losses and initialises the initial value to 0
+
 	var wins = 0;
 
 	document.querySelector('#wins').insertAdjacentHTML('beforeEnd', wins);
@@ -48,9 +52,11 @@ $(document).ready(function(){
 
 	document.querySelector('#losses').insertAdjacentHTML('beforeEnd', losses);
 
+	// Variable that is assigned a specific value depending on the difficulty chosen by the user
+
 	var tries = 0;
 
-	//Reference to hide the row containing the difficulty buttons
+	//Reference to elements that are needed to be hidden innitially, or that will need to be revealed later in the HTML file
 
 	var welcomeRow = document.getElementById('welcome');
 
@@ -68,13 +74,18 @@ $(document).ready(function(){
 
 	var newGameLoss = document.getElementById('newGameLoss');
 
+	//All difficulties share the same algorithim, the only thing that changes is the length of the word requested from the API call and the ammount of tries given
+	//Therefore I will only comment difficulty one, but the same logic applys to all difficulties
+
 
 	difficulty1.onclick = function(){
 
 		//To begin the game the game difficulty buttons will disappear
-		//and show the user guesses
+		//and show the user guesses, the correct guesses, and the ammount of wrongs they are allowed to have, and then the ammount remaining
 
 		if(gameWord == ""){
+
+			//for the easiest difficulty you can have 7 wrongs
 
 			tries = 7;
 
@@ -88,14 +99,18 @@ $(document).ready(function(){
 
 		}
 
+		//var that holds the url to the API call, this one holds my own requested API key
+
 		var apicall = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
 
 		//Use GET request to get a 5 character word
 
-
 		$.getJSON(apicall, function(data){
 
 			var parsedData = JSON.parse(JSON.stringify(data));
+
+			//JSON data comes back with the word between backets
+			//I used the substring function to get rid of those brakets
 
 			gameWord = JSON.stringify(parsedData.word.toUpperCase()).substring(1,6);
 
@@ -124,6 +139,7 @@ $(document).ready(function(){
 			//Checks the 'userGuess' vs an initially empty array called 'userGuessArray'
 			//If 'userGuess' is not found in the array, it proceeds to execute code
 			//that will check if the guess the user made is correct or not
+			//Sidenote: The reason the overload array is not implemented in levels 1 and 2 is because it's inpossible for the user to have guessed more than 16 letters/characters
 
 			if(userGuessArray.indexOf(userGuess) == -1){
 
@@ -141,28 +157,42 @@ $(document).ready(function(){
 
 
 				//Checks current ammount of wrongs, if user has 3 wrongs and this 4th attemp is also wrong
-				// it executes the code inside the if statement
+				//it executes the code inside the if statement
 
 				if(wrongs == 6 && currentWord.indexOf(userGuess) == -1 ){
+
+					//The game finishes here when you lose, I have to update tries to eequal 0 here because it won't reach the line of code where it's updated later down
+					//Also displays it in the HTML file
 
 					tries = 0;
 
 					document.querySelector('#triesRemaining').innerHTML = tries;
 
+					// Increments the number of losses and updates the losses counter on the html page
+
 					losses++;
 
 					document.querySelector('#losses').innerHTML = "Losses: "+ losses;
 
+					//Makes the lossScreen visible, this only shows up when you lose
+
 					lossScreen.style.display = " block";
+
+					//Shows the user what the correct word to be guessed was
 
 					document.querySelector('#correct').innerHTML = gameWord;
 
+					//Removes the EventListener added before that "listened" for keystrokes
+					//Prevents the page from reading keystrokes after the user has lost
+
 					document.removeEventListener("keypress", check1);
+
+					//With the loseScreen appears a button, upon click the following function activates
+					//The function resets all values to their default, so that the game can be played again
 
 					newGameLoss.onclick = function resetDefaultValues(){
 
-						//All the following code inside this if statement resets all values to their defaults
-						//so when a difficulty button is pressed again, the game can restart with defaults set
+						//Hides the game information and once again makes visible the game difficulty
 
 						buttonRow.style.display = 'block';
 						welcomeRow.style.display = 'block';
@@ -170,6 +200,7 @@ $(document).ready(function(){
 						gameInfo.style.display = 'none';
 						lossScreen.style.display = 'none';
 
+						//Reset values, so the next difficulty called upon can utilize these variables
 
 						wrongs = 0;
 						rights = 0;
@@ -185,15 +216,15 @@ $(document).ready(function(){
 						document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 						document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
+						//Original elements of the array
+
 						difficultyArray1 = ["_", "_", "_", "_", "_"];
 
 						gameWord = "";
 
-						
-
-						//Finishes the function (or so I wish, I want this to finish the difficulty1.onclick function too)
-
 					}
+
+					//Finishes the function check1()
 
 					return;
 
@@ -206,19 +237,23 @@ $(document).ready(function(){
 					//The following loop checks for all instances of the same letter in the word
 
 					while(currentWord.indexOf(userGuess) >= 0){
-
 						
-
 						//difficultyArray1 starts off empty, only when a userGuess is right, userGuess is pushed into the array
 						//at the same index it is in the array currentWord
 
 						difficultyArray1[currentWord.indexOf(userGuess)] = userGuess;
 
 						//Access the index of the array that holds the game word and exchanges whatever letter was in there
-						//to ""(empty), and loops again to look for the next instance of the same letter
+						//to "_", and loops again to look for the next instance of the same letter
+
 						currentWord[currentWord.indexOf(userGuess)] = "_";
 
+						//Turns the array that holds the correct guesses and in their respective indexes to a String
+						//The function .join("") unites all elements with ""(empty) in between, (So commas are not a problem)
+
 						var htmldifficultuArray1 = difficultyArray1.join("");
+
+						//Everytime a an instance of userGuess is found in the current game word the html div containing the correct guesses is updated
 
 						document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
@@ -231,18 +266,23 @@ $(document).ready(function(){
 
 						if(rights == 5){
 
+							//Makes the win screen visible, and updates the number of wins this session both on the .js file and HTML page
+
 							winScreen.style.display = 'block';
 
 							wins++;
 
 							document.querySelector('#wins').innerHTML = "Wins: "+ wins;
 
+							//Stops the documment from "listening" to keystrokes after you win
+
 							document.removeEventListener("keypress", check1);
+
+							//Function that resets all values to default when the button to start a new game is pressed
 
 							newGameWin.onclick = function resetDefaultValues(){
 
-								//All the following code inside this if statement resets all values to their defaults
-								//so when a difficulty button is pressed again, the game can restart with defaults set
+								//Hides the game information, and allows the user to chose a difficulty once again
 
 								buttonRow.style.display = 'block';
 								welcomeRow.style.display = 'block';
@@ -250,6 +290,7 @@ $(document).ready(function(){
 								gameInfo.style.display = 'none';
 								winScreen.style.display = 'none';
 
+								//Reset values, so the next difficulty called upon can utilize these variables
 
 								wrongs = 0;
 								rights = 0;
@@ -265,13 +306,15 @@ $(document).ready(function(){
 								document.querySelector('#userGuessArray').innerHTML = htmlUserArray;
 								document.querySelector('#correct').innerHTML = htmldifficultuArray1;
 
+								//Original elements of the array
+
 								difficultyArray1 = ["_", "_", "_", "_", "_"];
 
 								gameWord = "";
 
-								//Finishes the function (or so I wish, I want this to finish the difficulty1.onclick function too)
-
 							}
+
+							//Finishes the function check1() 
 
 							return;
 
@@ -283,23 +326,24 @@ $(document).ready(function(){
 
 				else {
 
-					//When userGuess is not found, the number of wrong increases
+					//When userGuess is not found, the number of wrong increases and tries decresses 
+					//Also the number of wrongs left is updated on the HTML page
 
 					wrongs++;
 					tries--;
 
 					document.querySelector('#triesRemaining').innerHTML = tries;
 
-
 				}
 
 			}
 
-
-
 		}
 
+		//finishes the function difficulty1.onclick
+
 		return;
+
 	}
 
 	difficulty2.onclick = function(){
