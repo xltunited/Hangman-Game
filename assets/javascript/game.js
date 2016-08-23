@@ -74,9 +74,45 @@ $(document).ready(function(){
 
 	var newGameLoss = document.getElementById('newGameLoss');
 
+	//Variables that hold reference to play and pause buttons
+
+	var pause = document.getElementById('pause');
+	var play = document.getElementById('play');
+
+	//Function that pauses audio currently playing on HTML page
+
+	pause.onclick = function() {
+
+		pause.style.display = 'none';
+		play.style.display = 'block'
+
+  		var sounds = document.getElementsByTagName('audio');
+
+  		for(i=0; i<sounds.length; i++){
+
+  		 sounds[i].pause();
+
+  		}
+
+	};
+
+	play.onclick = function() {
+
+		pause.style.display = 'block';
+		play.style.display = 'none'
+
+  		var sounds = document.getElementsByTagName('audio');
+
+  		for(i=0; i<sounds.length; i++){
+
+  		 sounds[i].play();
+
+  		}
+
+	};
+
 	//All difficulties share the same algorithim, the only thing that changes is the length of the word requested from the API call and the ammount of tries given
 	//Therefore I will only comment difficulty one, but the same logic applys to all difficulties
-
 
 	difficulty1.onclick = function(){
 

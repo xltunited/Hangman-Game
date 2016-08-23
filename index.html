@@ -45,6 +45,14 @@
 </head>
 
 <body>
+	
+	<!-- Page Audio -->
+
+	<audio autoplay loop>
+
+      <source src="./assets/audio/tristam-over.mp3">
+
+	</audio>
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
@@ -55,11 +63,16 @@
                 <a class="navbar-brand rules" href="http://www.printactivities.com/Paper-Games/Rules-For-Hangman.shtml">Hangman Rules</a>
 
             </div>
+
+            <p id="info">Words May Contain "'"(Apostrophes), " "(Spaces), "-"Dashes" or tildes e.x. "Á"</p>
     
             
         </div>
         
     </nav>
+
+    <button type="button" class="btn btn-danger btn-circle btn-xl" id="pause"><i class="glyphicon glyphicon-pause"></i></button>
+    <button type="button" class="btn btn-danger btn-circle btn-xl" id="play"><i class="glyphicon glyphicon-play"></i></button>
 
     <div class="container">
 
