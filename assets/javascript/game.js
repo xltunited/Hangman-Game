@@ -79,7 +79,7 @@ $(document).ready(function(){
 	var pause = document.getElementById('pause');
 	var play = document.getElementById('play');
 
-	//Function that pauses audio currently playing on HTML page
+	//Function that pauses and plays audio currently playing on HTML page
 
 	pause.onclick = function() {
 
