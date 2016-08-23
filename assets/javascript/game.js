@@ -161,6 +161,8 @@ $(document).ready(function(){
 
 					lossScreen.style.display = " block";
 
+					document.querySelector('#correct').innerHTML = gameWord;
+
 					document.removeEventListener("keypress", check1);
 
 					newGameLoss.onclick = function resetDefaultValues(){
@@ -399,6 +401,8 @@ $(document).ready(function(){
 					lossScreen.style.display = " block";
 
 					document.removeEventListener("keypress", check2);
+
+					document.querySelector('#correct').innerHTML = gameWord;
 
 					newGameLoss.onclick = function resetDefaultValues(){
 
@@ -650,6 +654,8 @@ $(document).ready(function(){
 					lossScreen.style.display = " block";
 
 					document.removeEventListener("keypress", check3);
+
+					document.querySelector('#correct').innerHTML = gameWord;
 
 					newGameLoss.onclick = function resetDefaultValues(){
 
@@ -905,6 +911,8 @@ $(document).ready(function(){
 
 					document.removeEventListener("keypress", check4);
 
+					document.querySelector('#correct').innerHTML = gameWord;
+
 					newGameLoss.onclick = function resetDefaultValues(){
 
 						//All the following code inside this if statement resets all values to their defaults
@@ -1152,6 +1160,8 @@ $(document).ready(function(){
 					document.querySelector('#losses').innerHTML = "Losses: "+ losses;
 
 					lossScreen.style.display = " block";
+
+					document.querySelector('#correct').innerHTML = gameWord;
 
 					document.removeEventListener("keypress", check5);
 
