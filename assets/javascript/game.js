@@ -135,9 +135,10 @@ $(document).ready(function(){
 
 		}
 
+		var randomDigit = Math.floor(Math.random()*100);
 		//var that holds the url to the API call, this one holds my own requested API key
 
-		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
+		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6&ver=" + randomDigit;
 
 		//Use GET request to get a 5 character word
 
@@ -398,13 +399,17 @@ $(document).ready(function(){
 
 		}
 
-		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=6&maxLength=6&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
+		var randomDigit = Math.floor(Math.random()*100);
+
+		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=6&maxLength=6&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6&ver=" + randomDigit;
 
 		$.getJSON(apicall, function(data){
 
 			var parsedData = JSON.parse(JSON.stringify(data));
 
 			gameWord = JSON.stringify(parsedData.word.toUpperCase()).substring(1,7);
+
+			console.log(gameWord);
 
 		});
 
@@ -562,7 +567,9 @@ $(document).ready(function(){
 
 		}
 
-		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=7&maxLength=7&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
+		var randomDigit = Math.floor(Math.random()*100);
+
+		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=7&maxLength=7&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6&ver=" + randomDigit;
 
 		$.getJSON(apicall, function(data){
 
@@ -746,7 +753,9 @@ $(document).ready(function(){
 
 		}
 
-		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=9&maxLength=9&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
+		var randomDigit = Math.floor(Math.random()*100);
+
+		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=9&maxLength=9&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6&ver=" + randomDigit;
 
 		$.getJSON(apicall, function(data){
 
@@ -930,7 +939,9 @@ $(document).ready(function(){
 
 		}
 
-		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=15&maxLength=15&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6";
+		var randomDigit = Math.floor(Math.random()*100);
+
+		var apicall = "https://crossorigin.me/http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=15&maxLength=15&api_key=ba3d180eb7c56867e600204177a00eee809035f45d0789fd6&ver=" + randomDigit;
 
 		$.getJSON(apicall, function(data){
 
