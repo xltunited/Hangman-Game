@@ -143,7 +143,7 @@ fieldset[disabled] .btn-difficulty.active {
 .format1 {
 
 
-	font-size: 3em;
+	font-size: 2em;
 
 	letter-spacing: 3px;
 
@@ -285,6 +285,7 @@ fieldset[disabled] .btn-difficulty.active {
 #pause{
 
 	margin-left: 80px;
+	position: fixed;
 
 
 }
@@ -329,10 +330,36 @@ fieldset[disabled] .btn-difficulty.active {
 	display: none;
 	margin-left: 80px;
 
+	position: fixed;
+
+
+}
+
+@media only screen and (max-width: 1680px){
+
+	.allbody{
+	
+		zoom: .65;
+		-moz-transform: scale(.65);
+   		-moz-transform-origin: 0 0;
+
+
+	}
+
 
 }
 
 
+@media only screen and (max-width: 1440px){
+
+	.allbody{
+	
+		zoom: .5;
+		-moz-transform: scale(.5);
+    	-moz-transform-origin: 0 0;
 
 
+	}
 
+
+}
