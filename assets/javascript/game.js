@@ -409,8 +409,6 @@ $(document).ready(function(){
 
 			gameWord = JSON.stringify(parsedData.word.toUpperCase()).substring(1,7);
 
-			console.log(gameWord);
-
 		});
 
 		document.addEventListener("keypress", check2);
